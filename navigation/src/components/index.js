@@ -1,0 +1,5 @@
+export * from './OnBoarding'
+export * from './Splash'
+export * from './Home'
+export * from './ContactUs'
+export * from './AboutUs'
