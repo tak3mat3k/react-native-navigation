@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Button, Image } from 'react-native'
+import { StyleSheet, Image, TouchableOpacity } from 'react-native'
 import { StackNavigator, DrawerNavigator } from 'react-navigation'
 import { 
   Splash,
@@ -9,8 +9,14 @@ import {
   AboutUs
 } from '../components'
 
+import Icon from 'react-native-vector-icons/EvilIcons'
+
 const defaultBackButton = (navigation) => {
-  return <Button title={"FAk"} onPress={() => { navigation.navigate('DrawerOpen') } } />
+  return (
+    <TouchableOpacity onPress={() => { navigation.navigate('DrawerOpen') }} >
+      <Icon name="navicon" size={30} color="black" />
+    </TouchableOpacity>
+  ) 
 }
 
 const HomeRouter = StackNavigator({
@@ -54,8 +60,7 @@ const MyApp = DrawerNavigator({
   ContactUs: { screen: ContactUsRouter },
   AboutUs: { screen: AboutUsRouter }
 },{
-  initialRouteName: 'Home',
-  mode: 'modal'
+  initialRouteName: 'Home'
 });
 
 const MainAppRouter = StackNavigator({
@@ -69,7 +74,8 @@ const MainAppRouter = StackNavigator({
     screen: MyApp
   }
 }, {
-  headerMode: 'none'
+  headerMode: 'none',
+  mode: 'modal'
 })
 
 export { MainAppRouter }
