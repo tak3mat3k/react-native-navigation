@@ -1,14 +1,14 @@
-import React from 'react'
-import { StyleSheet, Image, TouchableOpacity } from 'react-native'
+import React, { Component } from 'react'
+import { StyleSheet, Image, TouchableOpacity, View, Header } from 'react-native'
 import { StackNavigator, DrawerNavigator } from 'react-navigation'
 import { 
   Splash,
   OnBoarding,
   Home,
   ContactUs,
-  AboutUs
+  AboutUs,
+  CustomHeader
 } from '../components'
-
 import Icon from 'react-native-vector-icons/EvilIcons'
 
 const defaultBackButton = (navigation) => {
@@ -26,7 +26,8 @@ const HomeRouter = StackNavigator({
       title: 'Home',
       drawerLabel: 'The Home',
       gesturesEnabled: false,
-      headerLeft: defaultBackButton(navigation)
+      headerLeft: defaultBackButton(navigation),
+      header: (props) => <CustomHeader {...props} leftButton={defaultBackButton(navigation)} />
     })
   }
 })
